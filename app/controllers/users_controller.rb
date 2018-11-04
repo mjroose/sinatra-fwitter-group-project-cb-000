@@ -38,7 +38,11 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-      user = User.find_by(username: params[:username], email: params[:email], password: params[:password]) || nil
+    begin
+      user = User.find_by(username: params[:username], email: params[:email], password: params[:password])
+    rescue
+      user = nil
+    end
 
     if user
       session[:user_id] = user.id
