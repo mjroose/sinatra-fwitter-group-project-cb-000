@@ -3,6 +3,7 @@ require './config/environment'
 class TweetsController < ApplicationController
   configure do
     set :views, 'app/views'
+    enable :sessions
   end
 
   get '/tweets' do
