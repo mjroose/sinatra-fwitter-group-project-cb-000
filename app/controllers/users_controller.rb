@@ -1,3 +1,5 @@
+require './config/environment'
+
 class UsersController < ApplicationController
   configure do
     set :public_folder, 'public'
