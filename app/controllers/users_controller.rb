@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect to "/users/#{user.slug}"
     else
-      session[:error_message] = "Invalid user info.  Please provide a unique username, email, and password."
+      @error_message = "Invalid user info.  Please provide a unique username, email, and password."
       erb :'/users/create_user'
     end
   end
