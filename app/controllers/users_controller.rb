@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
+  get '/logout' do
+    session.clear
+    redirect to '/'
+  end
+
   post '/signup' do
     user = User.new(username: params[:username], email: params[:email], password: params[:password])
 
@@ -43,6 +48,5 @@ class UsersController < ApplicationController
       erb :'/users/create_user'
     end
   end
-
 
 end
