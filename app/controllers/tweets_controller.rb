@@ -15,4 +15,12 @@ class TweetsController < ApplicationController
       redirect to '/'
     end
   end
+
+  get '/tweets/new' do
+    if User.logged_in?(session)
+      erb :'/tweets/new'
+    else
+      redirect to '/login'
+    end
+  end
 end
