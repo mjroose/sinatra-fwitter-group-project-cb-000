@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
     User.find_by(username: username)
   end
 
+  def self.logged_in?(session)
+    !!session[:user_id]
+  end
 end
