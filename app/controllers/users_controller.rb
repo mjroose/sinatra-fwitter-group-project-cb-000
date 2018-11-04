@@ -45,6 +45,8 @@ class UsersController < ApplicationController
       user = nil
     end
 
+    binding.pry
+
     if user
       session[:user_id] = user.id
       redirect to "/tweets"
