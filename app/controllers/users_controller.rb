@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      
+
       redirect to "/tweets"
     else
       @error_message = "Invalid user info.  Please provide a unique username, email, and password."
@@ -40,12 +40,10 @@ class UsersController < ApplicationController
 
   post '/login' do
     begin
-      user = User.find_by(username: params[:username], email: params[:email], password: params[:password])
+      user = User.find_by(username: params[:username], email: params[:email])
     rescue
       user = nil
     end
-
-    binding.pry
 
     if user
       session[:user_id] = user.id
