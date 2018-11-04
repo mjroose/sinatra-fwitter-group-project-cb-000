@@ -20,18 +20,13 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    if User.already_exists?(params)
-      session[:error_message] = "User already exists.  Click <a href='/login'>here</a> to log in."
-      erb :'/users/create_user'
-    else
-      user = User.new(username: params[:username], email: params[:email], password: params[:password])
-    end
-    
+    user = User.new(username: params[:username], email: params[:email], password: params[:password])
+
     if user.save
       session[:user_id] = user.id
       redirect to "/users/#{user.slug}"
     else
-      session[:error_message] = "Invalid user info.  Please provide a username, email, and password."
+      session[:error_message] = "Invalid user info.  Please provide a unique username, email, and password."
       erb :'/users/create_user'
     end
   end
