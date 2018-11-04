@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 
   def self.find_by_slug(slug)
     username = slug.gsub(/-/, " ")
-    User.find_by(name: )
+    User.find_by(username: username)
   end
 end
