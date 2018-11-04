@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def self.already_exists?(user_data)
-    !!(User.find_by(username: user_data[:email]) || User.find_by(email: user_data[:email]))
+    binding.pry
+    !!(User.find_by(username: user_data[:username]) || User.find_by(email: user_data[:email]))
   end
 end
