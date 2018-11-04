@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
+    binding.pry
     if User.logged_in?(session)
       redirect '/tweets'
     else
