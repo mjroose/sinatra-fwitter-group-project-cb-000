@@ -20,12 +20,24 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
-  post '/users' do
+  post '/signup' do
     user = User.new(username: params[:username], email: params[:email], password: params[:password])
 
     if user.save
       session[:user_id] = user.id
-      redirect to "/users/#{user.slug}"
+      redirect to "/tweets"
+    else
+      @error_message = "Invalid user info.  Please provide a unique username, email, and password."
+      erb :'/users/create_user'
+    end
+  end
+
+  post '/login' do
+    user = User.find_by(username: params[:username], email: params[:email], password: params[:password])
+
+    if user
+      session[:user_id] = user.id
+      redirect to "/tweets"
     else
       @error_message = "Invalid user info.  Please provide a unique username, email, and password."
       erb :'/users/create_user'
