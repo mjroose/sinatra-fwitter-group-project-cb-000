@@ -41,7 +41,7 @@ class TweetsController < ApplicationController
       tweet = Tweet.new(content: params[:content])
       tweet.user = user
       tweet.save
-      binding.pry
+
       redirect to "/tweets/#{tweet.id}"
     else
       redirect to 'login'
