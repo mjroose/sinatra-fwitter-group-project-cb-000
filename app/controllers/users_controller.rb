@@ -20,14 +20,14 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    user = User.create(username: params[:username], email: params[:email], password: params[:password])
+    # user = User.create(username: params[:username], email: params[:email], password: params[:password])
     binding.pry
     
-    if user
-      redirect to "/users/#{user.slug}"
-    else
-      @error_message = "Invalid user info.  Please provide a username, email, and password."
-      erb :'/users/create_user'
-    end
+    # if user
+    #   redirect to "/users/#{user.slug}"
+    # else
+    #   @error_message = "Invalid user info.  Please provide a username, email, and password."
+    #   erb :'/users/create_user'
+    # end
   end
 end
