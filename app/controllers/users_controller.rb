@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       redirect to "/tweets"
     else
       @error_message = "Invalid user info.  Please provide a unique username, email, and password."
-      erb :'/users/create_user'
+      erb :'/users/login'
     end
   end
 
