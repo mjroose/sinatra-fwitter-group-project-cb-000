@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   post '/users' do
     username = params[:username] != "" ? params[:username] : nil
-    user = User.create(username: username, email: params[:email], password: params[:password])
+    user = User.new(username: username, email: params[:email], password: params[:password])
     binding.pry
     if user
       redirect to "/users/#{user.slug}"
