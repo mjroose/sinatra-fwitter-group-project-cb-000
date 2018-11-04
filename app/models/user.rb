@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
     username = slug.gsub(/-/, " ")
     User.find_by(username: username)
   end
+
+  def self.already_exists?(user_data)
+    !!(User.find_by(username: user_data[:email]) || User.find_by(email: user_data[:email]))
+  end
 end
