@@ -8,8 +8,11 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    @error_message = session[:error_message]
-    erb :'/users/create_user'
+    if User.logged_in?(session)
+      redirect to '/tweets'
+    else
+      erb :'/users/create_user
+    end
   end
 
   get '/login' do
