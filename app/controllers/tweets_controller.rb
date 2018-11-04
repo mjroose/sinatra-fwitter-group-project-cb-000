@@ -23,4 +23,12 @@ class TweetsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  post '/tweets' do
+    if User.logged_in?(session)
+      binding.pry
+    else
+      redirect to 'login'
+    end
+  end
 end
