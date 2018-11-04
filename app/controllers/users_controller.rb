@@ -11,12 +11,16 @@ class UsersController < ApplicationController
     if User.logged_in?(session)
       redirect to '/tweets'
     else
-      erb :'/users/create_user
+      erb :'/users/create_user'
     end
   end
 
   get '/login' do
-    erb :'/users/login'
+    if User.logged_in?(session)
+      redirect to '/tweets'
+    else
+      erb :'/users/login'
+    end
   end
 
   get '/users/:slug' do
