@@ -22,8 +22,8 @@ class UsersController < ApplicationController
   post '/users' do
     username = params[:username] != "" ? params[:username] : nil
     user = User.new(username: username, email: params[:email], password: params[:password])
-    binding.pry
-    if user
+
+    if user.save
       redirect to "/users/#{user.slug}"
     else
       @error_message = "Invalid user info.  Please provide a username, email, and password."
