@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
   end
 
   get '/tweets' do
+    binding.pry
     if User.logged_in?(session)
       @user = User.current_user(session)
       @tweets = Tweet.all
