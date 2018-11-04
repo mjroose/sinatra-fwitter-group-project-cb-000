@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   post '/users' do
     # user = User.create(username: params[:username], email: params[:email], password: params[:password])
     binding.pry
-    
+
     # if user
     #   redirect to "/users/#{user.slug}"
     # else
