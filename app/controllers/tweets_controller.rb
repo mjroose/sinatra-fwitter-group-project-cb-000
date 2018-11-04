@@ -40,11 +40,12 @@ class TweetsController < ApplicationController
       user = User.current_user(session)
       tweet = Tweet.new(content: params[:content])
       tweet.user = user
-      tweet.save
-
-      redirect to "/tweets/#{tweet.id}"
+      if tweet.save
+        redirect to "/tweets/#{tweet.id}"
+      else
+        redirect to '/tweets/new'
     else
-      redirect to '/tweets/new'
+      redirect to '/login'
     end
   end
 end
