@@ -5,4 +5,14 @@ class TweetsController < ApplicationController
     set :views, 'app/views'
   end
 
+  get '/tweets' do
+    if User.logged_in?(session)
+      @user = User.current_user(session)
+      @tweets = Tweet.all
+
+      erb :'/tweets/tweets'
+    else
+      redirect to '/login'
+    end
+  end
 end
