@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
+    @error_message = session[:error_message]
     erb :'/users/create_user'
   end
 
