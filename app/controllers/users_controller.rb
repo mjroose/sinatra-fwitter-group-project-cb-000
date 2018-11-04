@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
+    username = params[:username] != "" ? params[:username] : nil
     user = User.create(username: params[:username], email: params[:email], password: params[:password])
     binding.pry
     if user
