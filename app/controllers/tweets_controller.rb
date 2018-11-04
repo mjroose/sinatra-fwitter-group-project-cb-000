@@ -73,7 +73,9 @@ class TweetsController < ApplicationController
 
       if tweet && user.id == tweet.user.id
         tweet.content = params[:content]
-        tweet.save
+        if !tweet.save
+          redirect to "/tweets/#{tweet.id}/edit"
+        end
       end
     end
 
